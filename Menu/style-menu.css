@@ -14,7 +14,7 @@ body {
     width: 100%;
     z-index: 999;
     background:#1a1a1a;
-    padding: 10px 15px;
+    padding: 5px 10px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -27,18 +27,18 @@ body {
 }
 
 .back-btn{
+
     background: none;
     border: none;
     cursor: pointer;
     
-    /* Flecha fija a la izquierda */
     position: absolute;
     left: 10px;
 }
 
 .menu-title-fixed{
     font-family: "Luckiest Guy";
-    font-size: 2.5rem;
+    font-size: 2.0rem;
     color: #ffcc00;
     margin-bottom: 5px;
     text-shadow: 2px 2px 4px rgba(255,0,0,0.3);
