@@ -7,3 +7,7 @@ window.onclick = function(event) {
     event.target.style.display = "none";
     }
 };
+
+function closePopup(){
+    document.querySelectorAll('.popup').forEach(p => p.style.display = "none");
+}
