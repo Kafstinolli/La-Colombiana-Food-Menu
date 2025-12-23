@@ -14,7 +14,7 @@ body {
     width: 100%;
     z-index: 999;
     background:#1a1a1a;
-    padding: 14px 15px;
+    padding: 10px 15px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,7 +23,7 @@ body {
 .menu-header a{
     text-decoration: none;
     color: inherit;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 .back-btn{
