@@ -132,8 +132,16 @@ body {
 
 .price {
     font-size: 1.4rem;
-    color: #ffcc00;
+    color: #D62828;
     font-weight: bold;
+}
+
+.ingredients {
+    color: #ffcc00;
+}
+
+.dish {
+    color: #0057B7;
 }
 
 @keyframes zoomIn {
