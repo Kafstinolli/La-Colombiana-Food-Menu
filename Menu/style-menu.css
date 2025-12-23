@@ -7,17 +7,47 @@ body {
     padding: 0;
 }
 
-.menu-container {
-    text-align: center;
-    padding: 20px;
+.menu-header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    background:#1a1a1a;
+    padding: 14px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.menu-title {
+.menu-header a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.back-btn{
+    background: none;
+    border: none;
+    cursor: pointer;
+    
+    /* Flecha fija a la izquierda */
+    position: absolute;
+    left: 10px;
+}
+
+.menu-title-fixed{
     font-family: "Luckiest Guy";
     font-size: 2.5rem;
     color: #ffcc00;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     text-shadow: 2px 2px 4px rgba(255,0,0,0.3);
+}
+
+
+.menu-container {
+    text-align: center;
+    padding: 20px;
+    margin-top: 90px;
 }
 
 .menu-items {
