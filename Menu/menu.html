@@ -26,6 +26,13 @@
     <main class="menu-container">
         
         <div class="menu-items">
+            <!-- Picada Colombiana -->
+            <article class="menu-card" role="button" tabindex="0" data-popup="picada">
+                <img src="img/Picada.png" alt="Picada Colombiana" loading="lazy" decoding="async">
+                <h3>Picada Colombiana</h3>
+                <span class="btn-view">Ver más</span>
+            </article>
+
             <!-- Cazuela de Frijoles -->
             <article class="menu-card" role="button" tabindex="0" data-popup="cazuela">
                 <img src="img/Cazuela.png" alt="Cazuela de Frijoles" loading="lazy" decoding="async">
@@ -108,6 +115,17 @@
     </main>
 
     <!-- POPUPS -->
+    <!-- Picada Colombiana -->
+    <div id="popup-picada" class="popup" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="dish-picada">
+        <div class="popup-content">
+            <button class="popup-close" type="button" data-close-popup aria-label="Cerrar">×</button>
+            <img src="img/Picada.png" alt="Picada Colombiana" loading="lazy" decoding="async">
+            <h2 class="dish" id="dish-picada">Picada Colombiana</h2>
+            <p class="ingredients">Yellow potatoes, white potatoes, chorizo, chicken ribs, pork ribs, corn on the cob, crispy pork belly (chicharrón), ripe plantains.</p>
+            <p class="price">$ 30</p>
+        </div>
+    </div>
+
     <!-- Cazuela de Frijoles -->
     <div id="popup-cazuela" class="popup" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="dish-cazuela">
         <div class="popup-content">
