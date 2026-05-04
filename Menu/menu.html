@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,11 +8,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style-menu.css">
 </head>
-
+<body>
 <header class="menu-header">
     
-    <button class="back-btn" onclick="window.location.href='index.html'"">
-        <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="red" viewBox="0 0 16 16">
+    <button class="back-btn" type="button" onclick="window.location.href='index.html'" aria-label="Volver al inicio">
+        <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="red" viewBox="0 0 16 16" aria-hidden="true">
             <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
         </svg>
     </button>
@@ -22,162 +22,168 @@
     </a>
 
 </header>
-
-<body>
     
-    <div class="menu-container">
+    <main class="menu-container">
         
         <div class="menu-items">
             <!-- Cazuela de Frijoles -->
-            <div class="menu-card" onclick="openPopup('cazuela')">
-                <img src="img/Cazuela.png" alt="Cazuela de Frijoles">
+            <article class="menu-card" role="button" tabindex="0" data-popup="cazuela">
+                <img src="img/Cazuela.png" alt="Cazuela de Frijoles" loading="lazy" decoding="async">
                 <h3>Cazuela de Frijoles</h3>
-                <button class="btn-view">View more</button>
-            </div>
+                <span class="btn-view">Ver más</span>
+            </article>
 
             <!-- Sancocho -->
-            <div class="menu-card" onclick="openPopup('sancocho')">
-                <img src="img/Sancocho.png" alt="Sancocho">
+            <article class="menu-card" role="button" tabindex="0" data-popup="sancocho">
+                <img src="img/Sancocho.png" alt="Sancocho" loading="lazy" decoding="async">
                 <h3>Sancocho</h3>
-                <button class="btn-view">View more</button>
-            </div>
+                <span class="btn-view">Ver más</span>
+            </article>
 
             <!-- Ajiaco -->
-            <div class="menu-card" onclick="openPopup('ajiaco')">
-                <img src="img/Ajiaco.png" alt="Ajiaco">
+            <article class="menu-card" role="button" tabindex="0" data-popup="ajiaco">
+                <img src="img/Ajiaco.png" alt="Ajiaco" loading="lazy" decoding="async">
                 <h3>Ajiaco</h3>
-                <button class="btn-view">View more</button>
-            </div>
+                <span class="btn-view">Ver más</span>
+            </article>
 
             <!-- Arroz con Pollo -->
-            <div class="menu-card" onclick="openPopup('arroz-con-pollo')">
-                <img src="img/ArrozConPollo.png" alt="Arroz con Pollo">
+            <article class="menu-card" role="button" tabindex="0" data-popup="arroz-con-pollo">
+                <img src="img/ArrozConPollo.png" alt="Arroz con Pollo" loading="lazy" decoding="async">
                 <h3>Arroz con Pollo</h3>
-                <button class="btn-view">View more</button>
-            </div>
+                <span class="btn-view">Ver más</span>
+            </article>
 
             <!-- Arroz Paisa -->
-            <div class="menu-card" onclick="openPopup('arroz-paisa')">
-                <img src="img/ArrozPaisa.png" alt="Arroz Paisa">
+            <article class="menu-card" role="button" tabindex="0" data-popup="arroz-paisa">
+                <img src="img/ArrozPaisa.png" alt="Arroz Paisa" loading="lazy" decoding="async">
                 <h3>Arroz Paisa</h3>
-                <button class="btn-view">View more</button>
-            </div>
+                <span class="btn-view">Ver más</span>
+            </article>
 
             <!-- Caldo De Costilla -->
-            <div class="menu-card" onclick="openPopup('caldo-de-costilla')">
-                <img src="img/CaldoDeCostilla.png" alt="Caldo De Costilla">
+            <article class="menu-card" role="button" tabindex="0" data-popup="caldo-de-costilla">
+                <img src="img/CaldoDeCostilla.png" alt="Caldo De Costilla" loading="lazy" decoding="async">
                 <h3>Caldo De Costilla</h3>
-                <button class="btn-view">View more</button>
-            </div>
+                <span class="btn-view">Ver más</span>
+            </article>
 
             <!-- Huevos Pericos -->
-            <div class="menu-card" onclick="openPopup('huevos-pericos')">
-                <img src="img/HuevosPericos.png" alt="Huevos Pericos">
+            <article class="menu-card" role="button" tabindex="0" data-popup="huevos-pericos">
+                <img src="img/HuevosPericos.png" alt="Huevos Pericos" loading="lazy" decoding="async">
                 <h3>Huevos Pericos</h3>
-                <button class="btn-view">View more</button>
-            </div>
+                <span class="btn-view">Ver más</span>
+            </article>
 
             <!-- Empanadas -->
-            <div class="menu-card" onclick="openPopup('empanadas')">
-                <img src="img/Empanadas.png" alt="Empanadas">
+            <article class="menu-card" role="button" tabindex="0" data-popup="empanadas">
+                <img src="img/Empanadas.png" alt="Empanadas" loading="lazy" decoding="async">
                 <h3>Empanadas</h3>
-                <button class="btn-view">View more</button>
-            </div>
+                <span class="btn-view">Ver más</span>
+            </article>
 
             <!-- Arepas -->
-            <div class="menu-card" onclick="openPopup('arepas')">
-                <img src="img/Arepas.png" alt="Arepas">
+            <article class="menu-card" role="button" tabindex="0" data-popup="arepas">
+                <img src="img/Arepas.png" alt="Arepas" loading="lazy" decoding="async">
                 <h3>Arepas</h3>
-                <button class="btn-view">View more</button>
-            </div>
+                <span class="btn-view">Ver más</span>
+            </article>
 
             <!-- Pandebono -->
             <!--
-            <div class="menu-card" onclick="openPopup('pandebono')">
+            <article class="menu-card" role="button" tabindex="0" data-popup="pandebono">
                 <img src="img/Pandebono.png" alt="Pandebono">
                 <h3>Pandebono</h3>
-                <button class="btn-view">View more</button>
-            </div>
+                <span class="btn-view">Ver más</span>
+            </article>
             -->
         </div>
-    </div>
+    </main>
 
     <!-- POPUPS -->
     <!-- Cazuela de Frijoles -->
-    <div id="popup-cazuela" class="popup">
+    <div id="popup-cazuela" class="popup" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="dish-cazuela">
         <div class="popup-content">
-            <img src="img/Cazuela.png" alt="Cazuela de Frijoles">
-            <h2 class="dish">Cazuela de Frijoles</h2>
+            <button class="popup-close" type="button" data-close-popup aria-label="Cerrar">×</button>
+            <img src="img/Cazuela.png" alt="Cazuela de Frijoles" loading="lazy" decoding="async">
+            <h2 class="dish" id="dish-cazuela">Cazuela de Frijoles</h2>
             <p class="ingredients">Beans, Rice, Sausage, Ripe Plantain, Avocado.</p>
             <p class="price">$ 20</p>
-            </div>
+        </div>
     </div>
 
     <!-- Sancocho -->
-    <div id="popup-sancocho" class="popup">
+    <div id="popup-sancocho" class="popup" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="dish-sancocho">
         <div class="popup-content">
-            <img src="img/Sancocho.png" alt="Sancocho">
-            <h2 class="dish">Sancocho</h2>
+            <button class="popup-close" type="button" data-close-popup aria-label="Cerrar">×</button>
+            <img src="img/Sancocho.png" alt="Sancocho" loading="lazy" decoding="async">
+            <h2 class="dish" id="dish-sancocho">Sancocho</h2>
             <p class="ingredients">Yellow Potato, White Potato, Cassava, Chicken (Colombian), Pork Rib, Corn on the Cob</p>
             <p class="price">$ 20</p>
         </div>
     </div>
 
     <!-- Ajiaco -->
-    <div id="popup-ajiaco" class="popup">
-        <div   div class="popup-content">
-            <img src="img/Ajiaco.png" alt="Ajiaco">
-            <h2 class="dish">Ajiaco</h2>
+    <div id="popup-ajiaco" class="popup" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="dish-ajiaco">
+        <div class="popup-content">
+            <button class="popup-close" type="button" data-close-popup aria-label="Cerrar">×</button>
+            <img src="img/Ajiaco.png" alt="Ajiaco" loading="lazy" decoding="async">
+            <h2 class="dish" id="dish-ajiaco">Ajiaco</h2>
             <p class="ingredients">Chicken (Colombian), Yellow Potato, White Potato, Corn on the Cob, Scallions, Cream, Capers, Avocado, White Rice</p>
             <p class="price">$ 20</p>
         </div>
     </div>
 
     <!-- Arroz con Pollo -->
-    <div id="popup-arroz-con-pollo" class="popup">
+    <div id="popup-arroz-con-pollo" class="popup" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="dish-arroz-con-pollo">
         <div class="popup-content">
-            <img src="img/ArrozConPollo.png" alt="Arroz con Pollo">
-            <h2 class="dish">Arroz con Pollo</h2>
+            <button class="popup-close" type="button" data-close-popup aria-label="Cerrar">×</button>
+            <img src="img/ArrozConPollo.png" alt="Arroz con Pollo" loading="lazy" decoding="async">
+            <h2 class="dish" id="dish-arroz-con-pollo">Arroz con Pollo</h2>
             <p class="ingredients">Rice, Shredded Chicken, Bell Pepper, Onion, Carrot, Peas, Corn, Sausage</p>
             <p class="price">$ 20</p>
         </div>
     </div>
 
     <!-- Arroz Paisa -->
-    <div id="popup-arroz-paisa" class="popup">
+    <div id="popup-arroz-paisa" class="popup" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="dish-arroz-paisa">
         <div class="popup-content">
-            <img src="img/ArrozPaisa.png" alt="Arroz Paisa">
-            <h2 class="dish">Arroz Paisa</h2>
+            <button class="popup-close" type="button" data-close-popup aria-label="Cerrar">×</button>
+            <img src="img/ArrozPaisa.png" alt="Arroz Paisa" loading="lazy" decoding="async">
+            <h2 class="dish" id="dish-arroz-paisa">Arroz Paisa</h2>
             <p class="ingredients">Rice, Sausage, Pork Ribs, Chicken, Corn Kernels, Ripe Plantain, Bacon</p>
             <p class="price">$ 20</p>
         </div>
     </div>
 
     <!-- Caldo De Costilla -->
-    <div id="popup-caldo-de-costilla" class="popup">
+    <div id="popup-caldo-de-costilla" class="popup" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="dish-caldo-de-costilla">
         <div class="popup-content">
-            <img src="img/CaldoDeCostilla.png" alt="Caldo De Costilla">
-            <h2 class="dish">Caldo De Costilla</h2>
+            <button class="popup-close" type="button" data-close-popup aria-label="Cerrar">×</button>
+            <img src="img/CaldoDeCostilla.png" alt="Caldo De Costilla" loading="lazy" decoding="async">
+            <h2 class="dish" id="dish-caldo-de-costilla">Caldo De Costilla</h2>
             <p class="ingredients">White Potatoes, Beef Ribs, Scallions, Cilantro</p>
             <p class="price">$ 20</p>
         </div>
     </div>
 
     <!-- Huevos Pericos -->
-    <div id="popup-huevos-pericos" class="popup">
+    <div id="popup-huevos-pericos" class="popup" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="dish-huevos-pericos">
         <div class="popup-content">
-            <img src="img/HuevosPericos.png" alt="Huevos Pericos">
-            <h2 class="dish">Huevos Pericos + Arepa + Beverage</h2>
+            <button class="popup-close" type="button" data-close-popup aria-label="Cerrar">×</button>
+            <img src="img/HuevosPericos.png" alt="Huevos Pericos" loading="lazy" decoding="async">
+            <h2 class="dish" id="dish-huevos-pericos">Huevos Pericos + Arepa + Beverage</h2>
             <p class="ingredients">Eggs, Scallions, Tomato + Arepa + Drink</p>
             <p class="price">$ 18</p>
         </div>
     </div>
 
     <!-- Empanadas -->
-    <div id="popup-empanadas" class="popup">
+    <div id="popup-empanadas" class="popup" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="dish-empanadas">
         <div class="popup-content">
-            <img src="img/Empanadas.png" alt="Empanadas">
-            <h2 class="dish">Empanadas</h2>
+            <button class="popup-close" type="button" data-close-popup aria-label="Cerrar">×</button>
+            <img src="img/Empanadas.png" alt="Empanadas" loading="lazy" decoding="async">
+            <h2 class="dish" id="dish-empanadas">Empanadas</h2>
             <p class="ingredients">1. Rice, Sausage, Chicken, Pork Rib, Egg, White Potato</p>
             <p class="ingredients">2. Guava and Cheese </p>
             <p class="price">$ 5</p>
@@ -185,10 +191,11 @@
     </div>
 
     <!-- Arepas -->
-    <div id="popup-arepas" class="popup">
+    <div id="popup-arepas" class="popup" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="dish-arepas">
         <div class="popup-content">
-            <img src="img/Arepas.png" alt="Arepas">
-            <h2 class="dish">Arepas</h2>
+            <button class="popup-close" type="button" data-close-popup aria-label="Cerrar">×</button>
+            <img src="img/Arepas.png" alt="Arepas" loading="lazy" decoding="async">
+            <h2 class="dish" id="dish-arepas">Arepas</h2>
             <p class="ingredients">Arepa with Cheese + Hot Chocolate</p>
             <p class="price">$ 10</p>
         </div>

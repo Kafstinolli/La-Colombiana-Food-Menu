@@ -1,4 +1,4 @@
-/*MENU*/
+/* MENU */
 body {
     background-color: #0b0b0b;
     color: white;
@@ -7,68 +7,88 @@ body {
     padding: 0;
 }
 
-.menu-header{
+body.popup-open {
+    overflow: hidden;
+}
+
+.menu-header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 999;
-    background:#1a1a1a;
-    padding: 5px 10px;
+    z-index: 200;
+    background: #1a1a1a;
+    padding: 8px 10px;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
 }
 
-.menu-header a{
+.menu-header a {
     text-decoration: none;
     color: inherit;
-    margin-top: 10px;
 }
 
-.back-btn{
-
+.back-btn {
     background: none;
     border: none;
     cursor: pointer;
-    
     position: absolute;
     left: 10px;
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-.menu-title-fixed{
-    font-family: "Luckiest Guy";
+.back-btn:hover {
+    background-color: rgba(255, 204, 0, 0.12);
+    transform: translateX(-2px);
+}
+
+.back-btn:focus-visible,
+.menu-card:focus-visible,
+.popup-close:focus-visible {
+    outline: 3px solid #ffcc00;
+    outline-offset: 4px;
+}
+
+.menu-title-fixed {
+    font-family: "Luckiest Guy", cursive;
     font-size: 2.0rem;
     color: #ffcc00;
-    margin-bottom: 5px;
+    margin: 0;
     text-shadow: 2px 2px 4px rgba(255,0,0,0.3);
 }
 
-
 .menu-container {
     text-align: center;
-    padding: 20px;
-    margin-top: 90px;
+    padding: 96px 18px 40px;
 }
 
 .menu-items {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    width: min(100%, 1120px);
+    margin: 0 auto;
 }
 
 .menu-card {
     background-color: #1a1a1a;
-    border-radius: 15px;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.6);
-    width: 90%;
-    max-width: 400px;
     overflow: hidden;
-    transition: transform 0.3s ease;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
 }
 
 .menu-card:hover {
+    border-color: rgba(255,204,0,0.45);
     transform: translateY(-5px);
 }
 
@@ -81,18 +101,20 @@ body {
 .menu-card h3 {
     color: #fff;
     margin: 15px 0;
-    font-family: "Luckiest Guy";
+    padding: 0 14px;
+    font-family: "Luckiest Guy", cursive;
+    font-size: 1.45rem;
+    line-height: 1.15;
 }
 
 .btn-view {
+    display: inline-block;
     background-color: #ffcc00;
     color: #000;
     font-weight: bold;
-    border: none;
     border-radius: 8px;
     padding: 8px 20px;
     margin-bottom: 15px;
-    cursor: pointer;
     transition: all 0.3s;
 }
 
@@ -108,24 +130,54 @@ body {
     inset: 0;
     background: rgba(0,0,0,0.8);
     backdrop-filter: blur(4px);
+    padding: 20px;
     justify-content: center;
     align-items: center;
-    z-index: 100;
+    z-index: 300;
+}
+
+.popup.is-open {
+    display: flex;
 }
 
 .popup-content {
     background-color: #1c1c1c;
-    border-radius: 15px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
     padding: 20px;
     width: 90%;
     max-width: 400px;
+    max-height: 90vh;
+    overflow: auto;
+    position: relative;
     text-align: center;
     color: #fff;
     animation: zoomIn 0.3s ease;
 }
 
+.popup-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 38px;
+    height: 38px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.65);
+    color: #fff;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.popup-close:hover {
+    background: #D62828;
+}
+
 .popup-content img {
     width: 100%;
+    max-height: 300px;
+    object-fit: cover;
     border-radius: 10px;
     margin-bottom: 15px;
 }
@@ -149,3 +201,12 @@ body {
     to { transform: scale(1); opacity: 1; }
 }
 
+@media (max-width: 520px) {
+    .menu-items {
+        grid-template-columns: 1fr;
+    }
+
+    .menu-card img {
+        height: 210px;
+    }
+}

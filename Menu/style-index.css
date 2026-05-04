@@ -2,17 +2,22 @@
 
 body {
     background: radial-gradient(circle at center, #0a0a0a 0%, #000 100%);
-    font-family:"Luckiest Guy";
+    font-family: "Luckiest Guy", cursive;
+    min-height: 100vh;
+    padding: 24px;
+}
 
+.home {
+    width: min(100%, 420px);
 }
 
 .titulo-colombiano {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     gap: 8px;
-    margin-top: 40px;
-    margin-bottom: 10PX;
+    margin: 24px 0 14px;
     font-family: "Luckiest Guy", cursive;
     font-size: 22px;
     text-align: center;
@@ -37,6 +42,11 @@ body {
   color: #D62828; /* Rojo bandera */
 }
 
+.logo {
+    width: min(100%, 320px);
+    height: auto;
+}
+
 /* Boton Go To Menu */
 .btn-menu {
     display: inline-block;
@@ -45,7 +55,7 @@ body {
     text-transform: uppercase;
     text-decoration: none;
     transition: all 0.5s ease;
-    animation: pulse 1.8s infinite ease-in-out; /* 👈 Animación continua */
+    animation: pulse 1.8s infinite ease-in-out;
 }
 
 /* Animación de pulso */
@@ -72,13 +82,20 @@ body {
     box-shadow: 0 6px 12px rgba(0,0,0,0.5);
 }
 
+.btn-menu:focus-visible,
+.social-icons a:focus-visible,
+.phone-link:focus-visible {
+    outline: 3px solid #FFD700;
+    outline-offset: 5px;
+}
+
 /* Redes sociales */
 .social-icons {
     display: flex;
     justify-content: center;
     gap: 20px;
     margin-top: 25px;
-    margin-bottom: 25PX;
+    margin-bottom: 25px;
 }
 
 /* Base de los íconos */
@@ -119,4 +136,23 @@ body {
     box-shadow: 0 6px 14px rgba(0,0,0,0.5);
 }
 
+.phone-link {
+    color: #FFD700;
+    font-size: 24px;
+    text-decoration: none;
+}
 
+.phone-link i {
+    color: #D62828;
+    margin-right: 10px;
+}
+
+@media (max-width: 360px) {
+    .btn-menu {
+        font-size: 2rem;
+    }
+
+    .phone-link {
+        font-size: 20px;
+    }
+}
