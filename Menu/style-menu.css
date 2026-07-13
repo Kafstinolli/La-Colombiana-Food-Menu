@@ -1,10 +1,24 @@
-/* MENU */
+:root {
+    --ink: #f7f2e7;
+    --panel: #1a1a1a;
+    --panel-soft: #222;
+    --yellow: #ffcc00;
+    --blue: #2874d0;
+    --red: #d62828;
+    --muted: #c8c3ba;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
-    background-color: #0b0b0b;
-    color: white;
-    font-family: "Poppins", sans-serif;
     margin: 0;
-    padding: 0;
+    background:
+        radial-gradient(circle at 50% 0, rgba(40, 116, 208, 0.14), transparent 28rem),
+        #0b0b0b;
+    color: var(--ink);
+    font-family: "Poppins", sans-serif;
 }
 
 body.popup-open {
@@ -17,30 +31,44 @@ body.popup-open {
     left: 0;
     width: 100%;
     z-index: 200;
-    background: #1a1a1a;
-    padding: 8px 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+    padding: 9px 12px;
+    background: rgba(20, 20, 20, 0.96);
+    border-top: 4px solid var(--yellow);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(10px);
+}
+
+.menu-header::after {
+    position: absolute;
+    right: 0;
+    bottom: -3px;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--yellow) 0 33.333%, #1457a8 33.333% 66.666%, var(--red) 66.666%);
+    content: "";
 }
 
 .menu-header a {
-    text-decoration: none;
     color: inherit;
+    text-decoration: none;
 }
 
 .back-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
     position: absolute;
     left: 10px;
+    display: grid;
     width: 48px;
     height: 48px;
-    display: grid;
+    padding: 0;
     place-items: center;
+    border: 0;
     border-radius: 8px;
+    background: none;
+    color: var(--red);
+    cursor: pointer;
     transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
@@ -52,88 +80,236 @@ body.popup-open {
 .back-btn:focus-visible,
 .menu-card:focus-visible,
 .popup-close:focus-visible {
-    outline: 3px solid #ffcc00;
+    outline: 3px solid var(--yellow);
     outline-offset: 4px;
 }
 
 .menu-title-fixed {
-    font-family: "Luckiest Guy", cursive;
-    font-size: 2.0rem;
-    color: #ffcc00;
     margin: 0;
-    text-shadow: 2px 2px 4px rgba(255,0,0,0.3);
+    color: var(--yellow);
+    font-family: "Luckiest Guy", cursive;
+    font-size: 2rem;
+    text-shadow: 2px 2px 4px rgba(255, 0, 0, 0.3);
 }
 
 .menu-container {
+    width: min(100%, 1180px);
+    margin: 0 auto;
+    padding: 104px 22px 56px;
+}
+
+.menu-section + .menu-section {
+    margin-top: 72px;
+}
+
+.section-heading {
+    max-width: 780px;
+    margin: 0 auto 26px;
     text-align: center;
-    padding: 96px 18px 40px;
+}
+
+.section-kicker {
+    margin: 0 0 5px;
+    color: var(--yellow);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.section-heading h2 {
+    margin: 0;
+    color: #fff;
+    font-family: "Luckiest Guy", cursive;
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    line-height: 1.05;
+    text-wrap: balance;
+}
+
+.section-heading h2 span {
+    color: var(--blue);
+    font-size: 0.64em;
+}
+
+.seasonal-section {
+    padding: 30px 24px 34px;
+    border: 1px solid rgba(214, 40, 40, 0.42);
+    border-radius: 18px;
+    background: linear-gradient(145deg, rgba(214, 40, 40, 0.12), rgba(255, 204, 0, 0.045));
+}
+
+.seasonal-notice,
+.popup-seasonal,
+.card-seasonal {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid rgba(255, 204, 0, 0.52);
+    border-radius: 999px;
+    color: var(--yellow);
+    font-weight: 700;
+}
+
+.seasonal-notice {
+    margin: 14px 0 0;
+    padding: 8px 14px;
+    font-size: 0.88rem;
+}
+
+.seasonal-notice span {
+    color: #fff;
+    font-weight: 500;
 }
 
 .menu-items {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
     gap: 24px;
-    width: min(100%, 1120px);
-    margin: 0 auto;
 }
 
 .menu-card {
-    background-color: #1a1a1a;
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+    display: flex;
+    min-width: 0;
+    min-height: 100%;
+    padding: 0;
+    flex-direction: column;
     overflow: hidden;
-    transition: border-color 0.3s ease, transform 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    background: var(--panel);
+    color: inherit;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.38);
     cursor: pointer;
+    transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .menu-card:hover {
-    border-color: rgba(255,204,0,0.45);
+    border-color: rgba(255, 204, 0, 0.5);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.48);
     transform: translateY(-5px);
 }
 
-.menu-card img {
+.menu-card.is-featured {
+    border-color: rgba(245, 196, 0, 0.72);
+    box-shadow: 0 10px 30px rgba(245, 196, 0, 0.13);
+}
+
+.menu-card img,
+.menu-card-placeholder {
     width: 100%;
-    height: 220px;
+    height: 205px;
+}
+
+.menu-card img {
     object-fit: cover;
 }
 
-.menu-card h3 {
+.menu-card-placeholder {
+    position: relative;
+    display: grid;
+    overflow: hidden;
+    place-items: center;
+    background:
+        radial-gradient(circle at 22% 30%, rgba(255,255,255,0.28) 0 7px, transparent 8px),
+        radial-gradient(circle at 75% 67%, rgba(255,255,255,0.2) 0 13px, transparent 14px),
+        linear-gradient(145deg, #1457a8, #08346d);
+}
+
+.menu-card-placeholder.tone-soda {
+    background:
+        radial-gradient(circle at 26% 28%, rgba(255,255,255,0.34) 0 8px, transparent 9px),
+        radial-gradient(circle at 76% 64%, rgba(255,255,255,0.2) 0 15px, transparent 16px),
+        linear-gradient(145deg, #d62828, #761118);
+}
+
+.menu-card-placeholder span {
+    position: relative;
+    z-index: 1;
     color: #fff;
-    margin: 15px 0;
-    padding: 0 14px;
     font-family: "Luckiest Guy", cursive;
-    font-size: 1.45rem;
+    font-size: 2.35rem;
+    letter-spacing: 0.06em;
+    text-shadow: 0 3px 10px rgba(0,0,0,0.4);
+}
+
+.menu-card-body {
+    display: flex;
+    min-height: 174px;
+    padding: 17px 16px 16px;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-title {
+    display: block;
+    margin: 0;
+    color: #fff;
+    font-family: "Luckiest Guy", cursive;
+    font-size: 1.35rem;
     line-height: 1.15;
+}
+
+.card-price {
+    margin: 9px 0 0;
+    color: var(--yellow);
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.card-featured,
+.popup-featured {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    background: var(--red);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.card-featured {
+    margin: 0 0 11px;
+    padding: 7px 11px;
+}
+
+.card-seasonal {
+    margin: 10px 0 0;
+    padding: 5px 9px;
+    font-size: 0.68rem;
+    line-height: 1.2;
 }
 
 .btn-view {
     display: inline-block;
-    background-color: #ffcc00;
-    color: #000;
-    font-weight: bold;
-    border-radius: 8px;
-    padding: 8px 20px;
-    margin-bottom: 15px;
-    transition: all 0.3s;
-}
-
-.btn-view:hover {
-    background-color: #ff4444;
+    margin-top: auto;
+    padding-top: 15px;
     color: #fff;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
-/* POPUP */
+.btn-view::after {
+    color: var(--red);
+    content: "  →";
+}
+
 .popup {
-    display: none;
     position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.8);
-    backdrop-filter: blur(4px);
-    padding: 20px;
-    justify-content: center;
-    align-items: center;
     z-index: 300;
+    inset: 0;
+    display: none;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.82);
+    backdrop-filter: blur(5px);
 }
 
 .popup.is-open {
@@ -141,29 +317,33 @@ body.popup-open {
 }
 
 .popup-content {
-    background-color: #1c1c1c;
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 8px;
-    padding: 20px;
-    width: 90%;
-    max-width: 400px;
+    position: relative;
+    width: min(100%, 420px);
     max-height: 90vh;
     overflow: auto;
-    position: relative;
-    text-align: center;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    background: #1c1c1c;
     color: #fff;
-    animation: zoomIn 0.3s ease;
+    text-align: center;
+    box-shadow: 0 18px 60px rgba(0, 0, 0, 0.55);
+    animation: zoomIn 0.24s ease;
 }
 
 .popup-close {
     position: absolute;
+    z-index: 2;
     top: 10px;
     right: 10px;
-    width: 38px;
-    height: 38px;
+    display: grid;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    place-items: center;
     border: 0;
     border-radius: 50%;
-    background: rgba(0,0,0,0.65);
+    background: rgba(0, 0, 0, 0.72);
     color: #fff;
     font-size: 1.5rem;
     line-height: 1;
@@ -171,42 +351,102 @@ body.popup-open {
 }
 
 .popup-close:hover {
-    background: #D62828;
+    background: var(--red);
 }
 
-.popup-content img {
+#popup-visual img,
+#popup-visual .menu-card-placeholder {
     width: 100%;
-    max-height: 300px;
-    object-fit: cover;
+    height: min(300px, 42vh);
+    margin-bottom: 18px;
     border-radius: 10px;
-    margin-bottom: 15px;
+    object-fit: cover;
 }
 
-.price {
-    font-size: 1.4rem;
-    color: #D62828;
-    font-weight: bold;
+.popup-seasonal {
+    margin: 0 0 12px;
+    padding: 6px 10px;
+    font-size: 0.75rem;
 }
 
-.ingredients {
-    color: #ffcc00;
+.popup-featured {
+    margin: 0 0 12px;
+    padding: 8px 12px;
+}
+
+.popup-seasonal[hidden],
+.popup-featured[hidden] {
+    display: none;
 }
 
 .dish {
-    color: #0057B7;
+    margin: 0 0 10px;
+    color: #5598ea;
+    font-family: "Luckiest Guy", cursive;
+    line-height: 1.12;
+}
+
+.ingredients {
+    margin: 0 0 15px;
+    color: var(--yellow);
+    line-height: 1.55;
+}
+
+.price {
+    margin: 0;
+    color: #ff5555;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.noscript-message {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    left: 20px;
+    z-index: 400;
+    padding: 14px;
+    border-radius: 10px;
+    background: var(--red);
+    color: #fff;
+    text-align: center;
 }
 
 @keyframes zoomIn {
-    from { transform: scale(0.6); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
+    from { opacity: 0; transform: scale(0.94); }
+    to { opacity: 1; transform: scale(1); }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 560px) {
+    .menu-container {
+        padding: 96px 16px 42px;
+    }
+
+    .menu-section + .menu-section {
+        margin-top: 54px;
+    }
+
+    .seasonal-section {
+        padding: 26px 14px 24px;
+    }
+
     .menu-items {
         grid-template-columns: 1fr;
     }
 
-    .menu-card img {
-        height: 210px;
+    .menu-card img,
+    .menu-card-placeholder {
+        height: 220px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
     }
 }
