@@ -55,8 +55,8 @@ register_fonts()
 MAIN_DISHES = [
     {
         "name": "Picada Colombiana",
-        "price": "Small $23 | Large $31",
-        "description": "Our house special: yellow and white potatoes, chorizo, chicken, pork ribs, corn, crispy pork belly, and ripe plantains.",
+        "price": "$26",
+        "description": "Our house special: pork ribs, crispy pork belly, chicken, chorizo, corn on the cob, ripe plantains, and yellow and white potatoes.",
         "image": "Picada.jpg",
     },
     {
@@ -112,19 +112,19 @@ BROTHS = [
 BREAKFAST = [
     {
         "name": "Huevos Pericos",
-        "price": "$8",
+        "price": "$10",
         "description": "Colombian-style scrambled eggs with tomato and scallions.",
         "image": "HuevosPericos.jpg",
     },
     {
         "name": "Huevos Pericos con Arroz",
-        "price": "$10",
+        "price": "$13",
         "description": "Scrambled eggs with tomato and scallions, served with white rice.",
         "image": "HuevosPericosConArroz.jpg",
     },
     {
         "name": "Huevos Pericos con Arepa",
-        "price": "$12",
+        "price": "$16",
         "description": "Scrambled eggs with tomato and scallions, served with a corn arepa.",
         "image": "HuevosPericosConArepa.jpg",
     },
@@ -151,7 +151,7 @@ SNACKS = [
     },
     {
         "name": "Empanada",
-        "price": "$5",
+        "price": "1 for $6 | 2 for $10",
         "description": "Savory meat, rice, egg, and potato filling. Guava and cheese is also available.",
         "image": "Empanadas.jpg",
     },
@@ -348,15 +348,15 @@ def draw_featured_picada(pdf: canvas.Canvas, top: float, item: dict) -> float:
     pdf.drawString(text_x, top - 44, item["name"])
 
     pdf.setFillColor(RED)
-    pdf.setFont(FONT_BOLD, 11)
+    pdf.setFont(FONT_BOLD, 13)
     pdf.drawString(text_x, top - 61, item["price"])
 
     pdf.setFillColor(MUTED)
-    pdf.setFont(FONT_REGULAR, 7.3)
+    pdf.setFont(FONT_REGULAR, 8.2)
     cursor_y = top - 75
-    for line in wrap_text(item["description"], FONT_REGULAR, 7.3, text_width)[:3]:
+    for line in wrap_text(item["description"], FONT_REGULAR, 8.2, text_width)[:3]:
         pdf.drawString(text_x, cursor_y, line)
-        cursor_y -= 8.5
+        cursor_y -= 9.2
     return y - 11
 
 
@@ -377,28 +377,28 @@ def draw_food_card(pdf: canvas.Canvas, x: float, top: float, width: float, heigh
     text_x = photo_x + photo_size + 9
     text_width = x + width - text_x - 7
     price = item["price"]
-    price_size = 8.2
+    price_size = 10
     price_width = pdfmetrics.stringWidth(price, FONT_BOLD, price_size)
     name_width = max(58, text_width - price_width - 7)
-    name_lines = wrap_text(item["name"], FONT_BOLD, 8.1, name_width)
+    name_lines = wrap_text(item["name"], FONT_BOLD, 10, name_width)
 
-    cursor_y = top - 13
+    cursor_y = top - 15
     pdf.setFillColor(INK)
-    pdf.setFont(FONT_BOLD, 8.1)
+    pdf.setFont(FONT_BOLD, 10)
     for line in name_lines[:2]:
         pdf.drawString(text_x, cursor_y, line)
-        cursor_y -= 9
+        cursor_y -= 10.5
 
     pdf.setFillColor(RED)
     pdf.setFont(FONT_BOLD, price_size)
-    pdf.drawRightString(x + width - 7, top - 13, price)
+    pdf.drawRightString(x + width - 7, top - 15, price)
 
     cursor_y -= 1
     pdf.setFillColor(MUTED)
-    pdf.setFont(FONT_REGULAR, 6.55)
-    for line in wrap_text(item["description"], FONT_REGULAR, 6.55, text_width)[:3]:
+    pdf.setFont(FONT_REGULAR, 8.2)
+    for line in wrap_text(item["description"], FONT_REGULAR, 8.2, text_width)[:3]:
         pdf.drawString(text_x, cursor_y, line)
-        cursor_y -= 7.4
+        cursor_y -= 9
 
 
 def draw_food_section(
@@ -409,7 +409,7 @@ def draw_food_section(
     *,
     badge: str | None = None,
     seasonal: bool = False,
-    row_height: float = 64,
+    row_height: float = 70,
 ) -> float:
     cards_top = draw_section_heading(pdf, top, title, badge=badge, seasonal=seasonal)
     gap = 14
@@ -439,24 +439,24 @@ def draw_drink_card(pdf: canvas.Canvas, x: float, top: float, width: float, heig
 
     text_x = photo_x + photo_size + 7
     text_width = x + width - text_x - 6
-    price_width = pdfmetrics.stringWidth(item["price"], FONT_BOLD, 7.2)
+    price_width = pdfmetrics.stringWidth(item["price"], FONT_BOLD, 8.4)
     name_width = max(42, text_width - price_width - 5)
 
     pdf.setFillColor(INK)
-    pdf.setFont(FONT_BOLD, 7.1)
+    pdf.setFont(FONT_BOLD, 8.4)
     cursor_y = top - 12
-    for line in wrap_text(item["name"], FONT_BOLD, 7.1, name_width)[:2]:
+    for line in wrap_text(item["name"], FONT_BOLD, 8.4, name_width)[:2]:
         pdf.drawString(text_x, cursor_y, line)
         cursor_y -= 7.8
 
     pdf.setFillColor(RED)
-    pdf.setFont(FONT_BOLD, 7.2)
+    pdf.setFont(FONT_BOLD, 8.4)
     pdf.drawRightString(x + width - 6, top - 12, item["price"])
 
     cursor_y -= 1
     pdf.setFillColor(MUTED)
-    pdf.setFont(FONT_REGULAR, 5.8)
-    for line in wrap_text(item["description"], FONT_REGULAR, 5.8, text_width)[:2]:
+    pdf.setFont(FONT_REGULAR, 6.8)
+    for line in wrap_text(item["description"], FONT_REGULAR, 6.8, text_width)[:2]:
         pdf.drawString(text_x, cursor_y, line)
         cursor_y -= 6.5
 

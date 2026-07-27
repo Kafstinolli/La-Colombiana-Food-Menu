@@ -2,8 +2,8 @@ const menuItems = [
     {
         section: "main",
         name: "Picada Colombiana",
-        description: "Yellow potatoes, white potatoes, chorizo, chicken ribs, pork ribs, corn on the cob, crispy pork belly, and ripe plantains.",
-        price: "Small $23 | Large $31",
+        description: "Pork ribs, crispy pork belly, chicken, chorizo, corn on the cob, ripe plantains, and yellow and white potatoes.",
+        price: "$26",
         image: "img/Picada.png",
         featured: true
     },
@@ -48,21 +48,21 @@ const menuItems = [
         section: "breakfast",
         name: "Huevos Pericos",
         description: "Colombian-style scrambled eggs with tomato and scallions.",
-        price: "$8",
+        price: "$10",
         image: "img/HuevosPericos.png"
     },
     {
         section: "breakfast",
         name: "Huevos Pericos con Arroz",
         description: "Colombian-style scrambled eggs with tomato and scallions, served with white rice.",
-        price: "$10",
+        price: "$13",
         image: "img/HuevosPericosConArroz.jpg"
     },
     {
         section: "breakfast",
         name: "Huevos Pericos con Arepa",
         description: "Colombian-style scrambled eggs with tomato and scallions, served with a corn arepa.",
-        price: "$12",
+        price: "$16",
         image: "img/HuevosPericosConArepa.jpg"
     },
     {
@@ -104,7 +104,7 @@ const menuItems = [
         section: "breakfast",
         name: "Empanada",
         description: "Crispy corn pastry with a savory meat, rice, egg, and potato filling. Guava and cheese is also available.",
-        price: "$5",
+        price: "1 for $6 | 2 for $10",
         image: "img/Empanadas.png"
     },
     {

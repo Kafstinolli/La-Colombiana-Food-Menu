@@ -88,7 +88,7 @@ body.popup-open {
     margin: 0;
     color: var(--yellow);
     font-family: "Luckiest Guy", cursive;
-    font-size: 2rem;
+    font-size: 2.35rem;
     text-shadow: 2px 2px 4px rgba(255, 0, 0, 0.3);
 }
 
@@ -111,7 +111,7 @@ body.popup-open {
 .section-kicker {
     margin: 0 0 5px;
     color: var(--yellow);
-    font-size: 0.76rem;
+    font-size: 0.9rem;
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -163,8 +163,8 @@ body.popup-open {
 
 .menu-items {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 28px;
 }
 
 .menu-card {
@@ -235,8 +235,8 @@ body.popup-open {
 
 .menu-card-body {
     display: flex;
-    min-height: 174px;
-    padding: 17px 16px 16px;
+    min-height: 190px;
+    padding: 20px 18px 18px;
     flex: 1;
     flex-direction: column;
     align-items: center;
@@ -247,14 +247,14 @@ body.popup-open {
     margin: 0;
     color: #fff;
     font-family: "Luckiest Guy", cursive;
-    font-size: 1.35rem;
+    font-size: 1.8rem;
     line-height: 1.15;
 }
 
 .card-price {
     margin: 9px 0 0;
     color: var(--yellow);
-    font-size: 1.1rem;
+    font-size: 1.35rem;
     font-weight: 700;
 }
 
@@ -265,7 +265,7 @@ body.popup-open {
     border-radius: 999px;
     background: var(--red);
     color: #fff;
-    font-size: 0.7rem;
+    font-size: 0.82rem;
     font-weight: 700;
     letter-spacing: 0.08em;
     line-height: 1;
@@ -289,7 +289,7 @@ body.popup-open {
     margin-top: auto;
     padding-top: 15px;
     color: #fff;
-    font-size: 0.8rem;
+    font-size: 0.95rem;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -383,19 +383,21 @@ body.popup-open {
     margin: 0 0 10px;
     color: #5598ea;
     font-family: "Luckiest Guy", cursive;
+    font-size: 2.25rem;
     line-height: 1.12;
 }
 
 .ingredients {
     margin: 0 0 15px;
     color: var(--yellow);
-    line-height: 1.55;
+    font-size: 1.2rem;
+    line-height: 1.6;
 }
 
 .price {
     margin: 0;
     color: #ff5555;
-    font-size: 1.4rem;
+    font-size: 1.7rem;
     font-weight: 700;
 }
 
