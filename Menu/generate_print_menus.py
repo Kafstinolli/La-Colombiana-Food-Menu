@@ -151,15 +151,15 @@ SNACKS = [
     },
     {
         "name": "Empanada",
-        "price": "1 for $6 | 2 for $10",
+        "price": "$6",
         "description": "Savory meat, rice, egg, and potato filling. Guava and cheese is also available.",
         "image": "Empanadas.jpg",
     },
 ]
 
 DRINKS = [
-    {"name": "Soda", "price": "$1", "description": "Choice of canned soft drink.", "image": "Soda.jpg"},
-    {"name": "Agua", "price": "$1", "description": "Bottled water.", "image": "Agua.jpg"},
+    {"name": "Soda", "price": "$3", "description": "Choice of canned soft drink.", "image": "Soda.jpg"},
+    {"name": "Agua", "price": "$2", "description": "Bottled water.", "image": "Agua.jpg"},
     {
         "name": "Limonada Natural",
         "price": "12 oz $5",

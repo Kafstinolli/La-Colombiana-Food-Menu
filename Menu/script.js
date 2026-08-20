@@ -104,21 +104,21 @@ const menuItems = [
         section: "breakfast",
         name: "Empanada",
         description: "Crispy corn pastry with a savory meat, rice, egg, and potato filling. Guava and cheese is also available.",
-        price: "1 for $6 | 2 for $10",
+        price: "$6",
         image: "img/Empanadas.png"
     },
     {
         section: "drinks",
         name: "Soda",
         description: "Chilled canned soda.",
-        price: "$1",
+        price: "$3",
         image: "img/Soda.jpg"
     },
     {
         section: "drinks",
         name: "Agua",
         description: "Chilled bottled water.",
-        price: "$1",
+        price: "$2",
         image: "img/Agua.jpg"
     },
     {
