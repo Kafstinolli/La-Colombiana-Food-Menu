@@ -62,7 +62,7 @@ MAIN_DISHES = [
     },
     {
         "name": "Carne Sudada",
-        "price": "",
+        "price": "$20",
         "description": "Tender steak served with avocado, rice, and green or ripe plantain.",
         "image": "CarneSudada.jpg",
         "featured": True,
@@ -523,7 +523,7 @@ def draw_compact_drinks_section(pdf: canvas.Canvas, top: float) -> float:
 
 
 def draw_upcoming_juices_notice(pdf: canvas.Canvas, top: float) -> float:
-    text = "NATURAL JUICES COMING SOON: SOURSOP, LULO, PASSION FRUIT & MANGO, WITH WATER OR MILK. (DISPONIBLES PRÓXIMAMENTE)"
+    text = "NATURAL JUICES: SOURSOP, LULO, PASSION FRUIT & MANGO, WITH WATER OR MILK. COMING SUMMER 2027 — NOT AVAILABLE YET."
     pdf.setFillColor(PALE_BLUE)
     pdf.setStrokeColor(BLUE)
     pdf.roundRect(MARGIN, top - 29, PAGE_WIDTH - (2 * MARGIN), 25, 6, stroke=1, fill=1)

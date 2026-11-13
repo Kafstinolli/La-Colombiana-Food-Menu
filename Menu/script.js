@@ -11,7 +11,7 @@ const menuItems = [
         section: "main",
         name: "Carne Sudada",
         description: "Tender steak served with avocado, rice, and green or ripe plantain.",
-        price: "",
+        price: "$20",
         image: "img/CarneSudada.jpg",
         featured: true
     },
