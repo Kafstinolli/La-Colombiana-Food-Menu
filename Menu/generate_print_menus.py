@@ -524,7 +524,7 @@ def draw_compact_drinks_section(pdf: canvas.Canvas, top: float) -> float:
 
 
 def draw_upcoming_juices_notice(pdf: canvas.Canvas, top: float) -> float:
-    text = "NATURAL JUICES: PASSION FRUIT, TREE TOMATO, GUAVA, BLACKBERRY, MANGO & LULO, WITH WATER OR MILK. COMING SUMMER 2027 — NOT AVAILABLE YET."
+    text = "NATURAL JUICES: MARACUYÁ, TOMATE DE ÁRBOL, GUAYABA, MORA, MANGO & LULO, WITH WATER OR MILK. COMING SUMMER 2027 — NOT AVAILABLE YET."
     image_size = 52
     image_y = top - 57
     pdf.setFillColor(PALE_BLUE)
