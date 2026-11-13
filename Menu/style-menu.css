@@ -167,6 +167,21 @@ body.popup-open {
     gap: 28px;
 }
 
+.drinks-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+}
+
+.drinks-grid .menu-card img {
+    height: 170px;
+}
+
+.upcoming-drinks {
+    max-width: 900px;
+    margin: 24px auto 0;
+    line-height: 1.6;
+}
+
 .menu-card {
     display: flex;
     min-width: 0;
@@ -435,6 +450,8 @@ body.popup-open {
     .menu-items {
         grid-template-columns: 1fr;
     }
+
+    .drinks-grid { gap: 18px; }
 
     .menu-card img,
     .menu-card-placeholder {

@@ -125,6 +125,12 @@ BROTHS = [
 
 BREAKFAST = [
     {
+        "name": "Tamal",
+        "price": "$18",
+        "description": "Rice, pork rib, chicken, carrot, and egg wrapped in plantain leaves. Prepared once a month; follow us on Facebook and Instagram for advance announcements, or order ahead.",
+        "image": "Tamal.jpg",
+    },
+    {
         "name": "Huevos Pericos",
         "price": "$10",
         "description": "Colombian-style scrambled eggs with tomato and scallions.",
@@ -161,7 +167,7 @@ SNACKS = [
         "name": "Papa Rellena",
         "price": "$8",
         "description": "Crispy potato stuffed with seasoned ground beef and egg.",
-        "image": "PapaRellenaCarne.jpg",
+        "image": "PapaRellena.png",
     },
     {
         "name": "Empanada",
@@ -179,7 +185,7 @@ SNACKS = [
 
 DRINKS = [
     {"name": "Soda", "price": "$3", "description": "Choice of canned soft drink.", "image": "Soda.jpg"},
-    {"name": "Gaseosa Colombiana", "price": "$4", "description": "Chilled Colombian soda.", "image": "Gaseosa.jpg"},
+    {"name": "Colombian Soda", "price": "$4", "description": "Chilled Colombian soda.", "image": "Gaseosa.jpg"},
     {"name": "Agua", "price": "$2", "description": "Bottled water.", "image": "Agua.jpg"},
     {
         "name": "Limonada Natural",

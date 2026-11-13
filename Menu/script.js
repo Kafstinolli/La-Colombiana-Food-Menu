@@ -37,7 +37,7 @@ const menuItems = [
         image: "img/ArrozConPollo.png"
     },
     {
-        section: "main",
+        section: "breakfast",
         name: "Tamal",
         description: "Rice, pork rib, chicken, carrot, and egg wrapped in plantain leaves. Prepared once a month; announced in advance on Facebook and Instagram, or available by advance order.",
         price: "$18",
@@ -122,7 +122,7 @@ const menuItems = [
         name: "Papa Rellena",
         description: "Crispy potato stuffed with seasoned ground beef and egg.",
         price: "$8",
-        image: "img/PapaRellenaCarne.jpg"
+        image: "img/PapaRellena.png"
     },
     {
         section: "breakfast",
@@ -140,7 +140,7 @@ const menuItems = [
     },
     {
         section: "drinks",
-        name: "Gaseosa Colombiana",
+        name: "Colombian Soda",
         description: "Chilled Colombian soda.",
         price: "$4",
         image: "img/Gaseosa.jpg"
@@ -216,7 +216,7 @@ function cardMarkup(item, index) {
         <button class="menu-card${featuredClass}" type="button" data-menu-index="${index}" aria-haspopup="dialog" aria-controls="item-popup">
             ${visualMarkup(item)}
             <span class="menu-card-body">
-                ${featured ? `<span class="card-featured">${featuredLabel}</span>` : ""}
+                ${item.featured ? `<span class="card-featured">${item.name === "Picada Colombiana" ? "House Special" : "House Special · Especial de la casa"}</span>` : ""}
                 <span class="card-title">${item.name}</span>
                 <span class="card-price">${item.price}</span>
                 ${seasonal}
@@ -228,6 +228,7 @@ function cardMarkup(item, index) {
 
 document.querySelectorAll("[data-menu-section]").forEach((container) => {
     const section = container.dataset.menuSection;
+    if (section === "drinks") container.classList.add("drinks-grid");
     container.innerHTML = menuItems
         .map((item, index) => ({ item, index }))
         .filter(({ item }) => item.section === section)
