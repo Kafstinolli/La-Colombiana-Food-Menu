@@ -177,8 +177,27 @@ body.popup-open {
 }
 
 .upcoming-drinks {
+    display: flex;
+    align-items: center;
+    gap: 20px;
     max-width: 900px;
     margin: 24px auto 0;
+    padding: 14px;
+    border: 1px solid rgba(255, 204, 0, 0.4);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.upcoming-drinks img {
+    width: 150px;
+    height: 120px;
+    flex: 0 0 auto;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.upcoming-drinks .seasonal-notice {
+    margin: 0;
     line-height: 1.6;
 }
 
@@ -452,6 +471,10 @@ body.popup-open {
     }
 
     .drinks-grid { gap: 18px; }
+
+    .upcoming-drinks { align-items: stretch; flex-direction: column; }
+
+    .upcoming-drinks img { width: 100%; height: 190px; }
 
     .menu-card img,
     .menu-card-placeholder {

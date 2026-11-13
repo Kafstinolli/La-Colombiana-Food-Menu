@@ -504,7 +504,8 @@ def draw_drinks_section(pdf: canvas.Canvas, top: float) -> float:
         column = index % columns
         x = MARGIN + column * (column_width + gap)
         draw_drink_card(pdf, x, cards_top - (row * row_height), column_width, row_height, item)
-    return cards_top - (2 * row_height) - 10
+    rows = (len(DRINKS) + columns - 1) // columns
+    return cards_top - (rows * row_height) - 10
 
 
 def draw_compact_drinks_section(pdf: canvas.Canvas, top: float) -> float:
@@ -523,14 +524,21 @@ def draw_compact_drinks_section(pdf: canvas.Canvas, top: float) -> float:
 
 
 def draw_upcoming_juices_notice(pdf: canvas.Canvas, top: float) -> float:
-    text = "NATURAL JUICES: SOURSOP, LULO, PASSION FRUIT & MANGO, WITH WATER OR MILK. COMING SUMMER 2027 — NOT AVAILABLE YET."
+    text = "NATURAL JUICES: PASSION FRUIT, TREE TOMATO, GUAVA, BLACKBERRY, MANGO & LULO, WITH WATER OR MILK. COMING SUMMER 2027 — NOT AVAILABLE YET."
+    image_size = 52
+    image_y = top - 57
     pdf.setFillColor(PALE_BLUE)
     pdf.setStrokeColor(BLUE)
-    pdf.roundRect(MARGIN, top - 29, PAGE_WIDTH - (2 * MARGIN), 25, 6, stroke=1, fill=1)
+    pdf.roundRect(MARGIN, image_y, PAGE_WIDTH - (2 * MARGIN), 52, 6, stroke=1, fill=1)
+    draw_photo(pdf, "Jugos.jpg", MARGIN + 5, image_y + 4, image_size, image_size - 8, radius=4)
     pdf.setFillColor(BLUE)
-    pdf.setFont(FONT_BOLD, 7)
-    pdf.drawCentredString(PAGE_WIDTH / 2, top - 19, text)
-    return top - 36
+    pdf.setFont(FONT_BOLD, 7.4)
+    lines = wrap_text(text, FONT_BOLD, 7.4, PAGE_WIDTH - (2 * MARGIN) - image_size - 22)
+    cursor_y = top - 25
+    for line in lines:
+        pdf.drawString(MARGIN + image_size + 13, cursor_y, line)
+        cursor_y -= 10
+    return image_y - 8
 
 
 def draw_footer(pdf: canvas.Canvas) -> None:
@@ -570,7 +578,7 @@ def build_main_menu(path: Path) -> float:
 def build_breakfast_menu(path: Path) -> float:
     pdf = canvas.Canvas(str(path), pagesize=A4, pageCompression=1)
     pdf.setTitle("La Colombiana Food - Breakfast Menu")
-    top = draw_header(pdf, "BREAKFAST MENU", "COLOMBIAN BREAKFAST, AVAILABLE BROTHS, SNACKS & DRINKS")
+    top = draw_header(pdf, "BREAKFAST MENU", "COLOMBIAN BREAKFAST, BROTHS & SNACKS")
     cursor_y = draw_food_section(pdf, top, "BREAKFAST (DESAYUNOS)", BREAKFAST)
     cursor_y = draw_food_section(
         pdf,
@@ -580,9 +588,16 @@ def build_breakfast_menu(path: Path) -> float:
         badge="AVAILABLE WITH BREAKFAST / DISPONIBLES CON DESAYUNO",
     )
     cursor_y = draw_food_section(pdf, cursor_y, "SNACKS (ANTOJITOS)", SNACKS, row_height=82)
-    cursor_y = draw_drinks_section(pdf, cursor_y)
     if cursor_y < 28:
         raise RuntimeError(f"Breakfast menu content is too tall: bottom={cursor_y:.1f}")
+    draw_footer(pdf)
+    pdf.showPage()
+
+    top = draw_header(pdf, "BREAKFAST MENU", "DRINKS & UPCOMING NATURAL JUICES")
+    cursor_y = draw_drinks_section(pdf, top)
+    cursor_y = draw_upcoming_juices_notice(pdf, cursor_y)
+    if cursor_y < 28:
+        raise RuntimeError(f"Breakfast drinks page content is too tall: bottom={cursor_y:.1f}")
     draw_footer(pdf)
     pdf.showPage()
     pdf.save()
