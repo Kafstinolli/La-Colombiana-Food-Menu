@@ -58,6 +58,14 @@ MAIN_DISHES = [
         "price": "$26",
         "description": "Our house special: pork ribs, crispy pork belly, chicken, chorizo, corn on the cob, ripe plantains, and yellow and white potatoes.",
         "image": "Picada.jpg",
+        "featured": True,
+    },
+    {
+        "name": "Carne Sudada",
+        "price": "",
+        "description": "Tender steak served with avocado, rice, and green or ripe plantain.",
+        "image": "CarneSudada.jpg",
+        "featured": True,
     },
     {
         "name": "Frijolada",
@@ -73,9 +81,15 @@ MAIN_DISHES = [
     },
     {
         "name": "Arroz con Pollo",
-        "price": "$20",
+        "price": "$18",
         "description": "Seasoned rice with shredded chicken, bell pepper, onion, carrot, peas, and corn.",
         "image": "ArrozConPollo.jpg",
+    },
+    {
+        "name": "Tamal",
+        "price": "$18",
+        "description": "Rice, pork rib, chicken, carrot, and egg wrapped in plantain leaves. Prepared once a month; follow us on Facebook and Instagram for advance announcements, or order ahead.",
+        "image": "Tamal.jpg",
     },
 ]
 
@@ -155,10 +169,17 @@ SNACKS = [
         "description": "Savory meat, rice, egg, and potato filling. Guava and cheese is also available.",
         "image": "Empanadas.jpg",
     },
+    {
+        "name": "Buñuelo",
+        "price": "$5",
+        "description": "Colombian cheese fritter. Available during the winter season only.",
+        "image": "Buñuelos.jpg",
+    },
 ]
 
 DRINKS = [
     {"name": "Soda", "price": "$3", "description": "Choice of canned soft drink.", "image": "Soda.jpg"},
+    {"name": "Gaseosa Colombiana", "price": "$4", "description": "Chilled Colombian soda.", "image": "Gaseosa.jpg"},
     {"name": "Agua", "price": "$2", "description": "Bottled water.", "image": "Agua.jpg"},
     {
         "name": "Limonada Natural",
@@ -323,7 +344,7 @@ def draw_section_heading(pdf: canvas.Canvas, top: float, title: str, badge: str 
 
 
 def draw_featured_picada(pdf: canvas.Canvas, top: float, item: dict) -> float:
-    height = 104
+    height = 96
     y = top - height
     width = PAGE_WIDTH - (2 * MARGIN)
     pdf.setFillColor(PALE_YELLOW)
@@ -338,23 +359,25 @@ def draw_featured_picada(pdf: canvas.Canvas, top: float, item: dict) -> float:
     text_x = photo_x + photo_width + 14
     text_width = PAGE_WIDTH - MARGIN - text_x - 10
     pdf.setFillColor(RED)
-    pdf.roundRect(text_x, top - 24, 92, 17, 6, stroke=0, fill=1)
+    badge_width = 92 if item["name"] == "Picada Colombiana" else 150
+    pdf.roundRect(text_x, top - 24, badge_width, 17, 6, stroke=0, fill=1)
     pdf.setFillColor(white)
     pdf.setFont(FONT_BOLD, 7.4)
-    pdf.drawCentredString(text_x + 46, top - 18, "HOUSE SPECIAL")
+    pdf.drawCentredString(text_x + (badge_width / 2), top - 18, "HOUSE SPECIAL" if item["name"] == "Picada Colombiana" else "HOUSE SPECIAL / ESPECIAL DE LA CASA")
 
     pdf.setFillColor(INK)
     pdf.setFont(FONT_BOLD, 15)
     pdf.drawString(text_x, top - 44, item["name"])
 
-    pdf.setFillColor(RED)
-    pdf.setFont(FONT_BOLD, 13)
-    pdf.drawString(text_x, top - 61, item["price"])
+    if item["price"]:
+        pdf.setFillColor(RED)
+        pdf.setFont(FONT_BOLD, 13)
+        pdf.drawString(text_x, top - 61, item["price"])
 
     pdf.setFillColor(MUTED)
     pdf.setFont(FONT_REGULAR, 8.2)
-    cursor_y = top - 75
-    for line in wrap_text(item["description"], FONT_REGULAR, 8.2, text_width)[:3]:
+    cursor_y = top - (75 if item["price"] else 61)
+    for line in wrap_text(item["description"], FONT_REGULAR, 8.2, text_width)[:2]:
         pdf.drawString(text_x, cursor_y, line)
         cursor_y -= 9.2
     return y - 11
@@ -396,9 +419,12 @@ def draw_food_card(pdf: canvas.Canvas, x: float, top: float, width: float, heigh
     cursor_y -= 1
     pdf.setFillColor(MUTED)
     pdf.setFont(FONT_REGULAR, 8.2)
-    for line in wrap_text(item["description"], FONT_REGULAR, 8.2, text_width)[:3]:
+    description_lines = 3 if item["name"] == "Tamal" else 2 if item["name"] == "Buñuelo" else 3
+    description_size = 7.2 if item["name"] == "Tamal" else 8.2
+    pdf.setFont(FONT_REGULAR, description_size)
+    for line in wrap_text(item["description"], FONT_REGULAR, description_size, text_width)[:description_lines]:
         pdf.drawString(text_x, cursor_y, line)
-        cursor_y -= 9
+        cursor_y -= 8 if item["name"] == "Tamal" else 9
 
 
 def draw_food_section(
@@ -475,6 +501,32 @@ def draw_drinks_section(pdf: canvas.Canvas, top: float) -> float:
     return cards_top - (2 * row_height) - 10
 
 
+def draw_compact_drinks_section(pdf: canvas.Canvas, top: float) -> float:
+    cards_top = draw_section_heading(pdf, top, "DRINKS (BEBIDAS)")
+    gap = 8
+    columns = 4
+    column_width = (PAGE_WIDTH - (2 * MARGIN) - (gap * (columns - 1))) / columns
+    row_height = 43
+    for index, item in enumerate(DRINKS):
+        row = index // columns
+        column = index % columns
+        x = MARGIN + column * (column_width + gap)
+        draw_drink_card(pdf, x, cards_top - (row * row_height), column_width, row_height, item)
+    rows = (len(DRINKS) + columns - 1) // columns
+    return cards_top - (rows * row_height) - 8
+
+
+def draw_upcoming_juices_notice(pdf: canvas.Canvas, top: float) -> float:
+    text = "NATURAL JUICES COMING SOON: SOURSOP, LULO, PASSION FRUIT & MANGO, WITH WATER OR MILK. (DISPONIBLES PRÓXIMAMENTE)"
+    pdf.setFillColor(PALE_BLUE)
+    pdf.setStrokeColor(BLUE)
+    pdf.roundRect(MARGIN, top - 29, PAGE_WIDTH - (2 * MARGIN), 25, 6, stroke=1, fill=1)
+    pdf.setFillColor(BLUE)
+    pdf.setFont(FONT_BOLD, 7)
+    pdf.drawCentredString(PAGE_WIDTH / 2, top - 19, text)
+    return top - 36
+
+
 def draw_footer(pdf: canvas.Canvas) -> None:
     pdf.setFillColor(MUTED)
     pdf.setFont(FONT_REGULAR, 6.8)
@@ -491,19 +543,18 @@ def build_main_menu(path: Path) -> float:
     pdf.setTitle("La Colombiana Food - Main Menu")
     top = draw_header(pdf, "MAIN MENU", "MAIN DISHES, SEASONAL SOUPS, SNACKS & DRINKS")
     cursor_y = draw_featured_picada(pdf, top, MAIN_DISHES[0])
-    cursor_y = draw_food_section(pdf, cursor_y, "MAIN DISHES (PLATOS PRINCIPALES)", MAIN_DISHES[1:])
-    cursor_y = draw_food_section(
-        pdf,
-        cursor_y,
-        "SOUPS (SOPAS)",
-        SOUPS,
-        badge="UNAVAILABLE DURING SUMMER / NO DISPONIBLES EN VERANO",
-        seasonal=True,
-    )
-    cursor_y = draw_food_section(pdf, cursor_y, "SNACKS (ANTOJITOS)", SNACKS)
-    cursor_y = draw_drinks_section(pdf, cursor_y)
+    cursor_y = draw_featured_picada(pdf, cursor_y, MAIN_DISHES[1])
+    cursor_y = draw_food_section(pdf, cursor_y, "MAIN DISHES (PLATOS PRINCIPALES)", MAIN_DISHES[2:], row_height=64)
+    cursor_y = draw_food_section(pdf, cursor_y, "SOUPS (SOPAS)", SOUPS, row_height=60, badge="UNAVAILABLE DURING SUMMER / NO DISPONIBLES EN VERANO", seasonal=True)
+    draw_footer(pdf)
+    pdf.showPage()
+
+    top = draw_header(pdf, "MAIN MENU", "SNACKS, DRINKS & UPCOMING JUICES")
+    cursor_y = draw_food_section(pdf, top, "SNACKS (ANTOJITOS)", SNACKS, row_height=78)
+    cursor_y = draw_compact_drinks_section(pdf, cursor_y)
+    cursor_y = draw_upcoming_juices_notice(pdf, cursor_y)
     if cursor_y < 28:
-        raise RuntimeError(f"Main menu content is too tall: bottom={cursor_y:.1f}")
+        raise RuntimeError(f"Main menu second page content is too tall: bottom={cursor_y:.1f}")
     draw_footer(pdf)
     pdf.showPage()
     pdf.save()
@@ -522,7 +573,7 @@ def build_breakfast_menu(path: Path) -> float:
         BROTHS,
         badge="AVAILABLE WITH BREAKFAST / DISPONIBLES CON DESAYUNO",
     )
-    cursor_y = draw_food_section(pdf, cursor_y, "SNACKS (ANTOJITOS)", SNACKS)
+    cursor_y = draw_food_section(pdf, cursor_y, "SNACKS (ANTOJITOS)", SNACKS, row_height=82)
     cursor_y = draw_drinks_section(pdf, cursor_y)
     if cursor_y < 28:
         raise RuntimeError(f"Breakfast menu content is too tall: bottom={cursor_y:.1f}")

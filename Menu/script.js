@@ -9,6 +9,14 @@ const menuItems = [
     },
     {
         section: "main",
+        name: "Carne Sudada",
+        description: "Tender steak served with avocado, rice, and green or ripe plantain.",
+        price: "",
+        image: "img/CarneSudada.jpg",
+        featured: true
+    },
+    {
+        section: "main",
         name: "Frijolada",
         description: "Colombian beans served with rice, chorizo, ripe plantain, and avocado.",
         price: "$20",
@@ -25,8 +33,24 @@ const menuItems = [
         section: "main",
         name: "Arroz con Pollo",
         description: "Rice with shredded chicken, bell pepper, onion, carrot, peas, and corn.",
-        price: "$20",
+        price: "$18",
         image: "img/ArrozConPollo.png"
+    },
+    {
+        section: "main",
+        name: "Tamal",
+        description: "Rice, pork rib, chicken, carrot, and egg wrapped in plantain leaves. Prepared once a month; announced in advance on Facebook and Instagram, or available by advance order.",
+        price: "$18",
+        image: "img/Tamal.jpg",
+        availability: "Prepared once a month. Follow us on Facebook and Instagram for advance announcements, or place an advance order."
+    },
+    {
+        section: "breakfast",
+        name: "Buñuelo",
+        description: "Colombian cheese fritter.",
+        price: "$5",
+        image: "img/Buñuelos.jpg",
+        availability: "Available during the winter season only."
     },
     {
         section: "soups",
@@ -116,6 +140,13 @@ const menuItems = [
     },
     {
         section: "drinks",
+        name: "Gaseosa Colombiana",
+        description: "Chilled Colombian soda.",
+        price: "$4",
+        image: "img/Gaseosa.jpg"
+    },
+    {
+        section: "drinks",
         name: "Agua",
         description: "Chilled bottled water.",
         price: "$2",
@@ -151,6 +182,8 @@ const menuItems = [
     }
 ];
 
+const upcomingDrinks = "Natural juices coming soon: soursop, lulo, passion fruit, and mango, made with water or milk.";
+
 const popup = document.getElementById("item-popup");
 const popupVisual = document.getElementById("popup-visual");
 const popupDish = document.getElementById("popup-dish");
@@ -158,6 +191,7 @@ const popupDescription = document.getElementById("popup-description");
 const popupPrice = document.getElementById("popup-price");
 const popupSeasonal = document.getElementById("popup-seasonal");
 const popupFeatured = document.getElementById("popup-featured");
+const popupAvailability = document.getElementById("popup-availability");
 let lastTrigger = null;
 
 function visualMarkup(item) {
@@ -173,8 +207,8 @@ function cardMarkup(item, index) {
     const seasonal = item.seasonal
         ? '<span class="card-seasonal">Unavailable during summer</span>'
         : "";
-    const featured = item.featured
-        ? '<span class="card-featured">House Special</span>'
+    const availability = item.availability
+        ? `<span class="card-seasonal">${item.availability}</span>`
         : "";
     const featuredClass = item.featured ? " is-featured" : "";
 
@@ -182,10 +216,11 @@ function cardMarkup(item, index) {
         <button class="menu-card${featuredClass}" type="button" data-menu-index="${index}" aria-haspopup="dialog" aria-controls="item-popup">
             ${visualMarkup(item)}
             <span class="menu-card-body">
-                ${featured}
+                ${featured ? `<span class="card-featured">${featuredLabel}</span>` : ""}
                 <span class="card-title">${item.name}</span>
                 <span class="card-price">${item.price}</span>
                 ${seasonal}
+                ${availability}
                 <span class="btn-view">View details</span>
             </span>
         </button>`;
@@ -213,6 +248,9 @@ function openPopup(index, trigger) {
     popupPrice.textContent = item.price;
     popupSeasonal.hidden = !item.seasonal;
     popupFeatured.hidden = !item.featured;
+    popupFeatured.textContent = item.featured ? (item.name === "Picada Colombiana" ? "House Special" : "House Special · Especial de la casa") : "";
+    popupAvailability.hidden = !item.availability;
+    popupAvailability.textContent = item.availability || "";
     popup.classList.add("is-open");
     popup.setAttribute("aria-hidden", "false");
     document.body.classList.add("popup-open");
